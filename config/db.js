@@ -2,7 +2,7 @@ import mysql from "mysql";
 
 
     const db = mysql.createConnection({
-      host: "us-cdbr-east-04.cleardb.com",
+      host: `${process.env.CLEARDB_DATABASE_URL}`,
       user: "ba1a9c8159e7f0",
       password: "fcc8fb46",
     });
