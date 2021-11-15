@@ -12,20 +12,27 @@ const app = express();
 
 app.use(express.json());
 
+
 app.get("/", (req, res) => {
-  res.send(`API is running.... visit https://github.com/OssaiJE/swapi-api for documentation`);
+  res.send(
+    `API is running.... visit https://github.com/OssaiJE/swapi-api for documentation`
+  );
 });
 
 app.use("/api/movies", moviesRoute);
 app.use("/api/people", peopleRoute);
 app.use("/api/comment", comment);
 
+app.get("*", (req, res) =>
+  res.send(
+    `API is running.... visit https://github.com/OssaiJE/swapi-api for documentation`
+  )
+);
+
 
 const PORT = process.env.PORT || 4041;
 
 app.listen(
   PORT,
-  console.log(
-    `Server running in ${process.env.NODE_ENV} mode on port ${PORT}`
-  )
+  console.log(`Server running in ${process.env.NODE_ENV} mode on port ${PORT}`)
 );
