@@ -20,11 +20,13 @@ router.get("/", async (req, res) => {
 
     swapiResponse.data.results.forEach((results) => {
       const { title, opening_crawl, release_date } = results;
+
+      // TODO comment count to be made dynamic
       let newMovie = {
         title,
         opening_crawl,
         release_date,
-        comment: "bla bla bla bla",
+        commentCount: [],
       };
       movieList.push(newMovie);
       
