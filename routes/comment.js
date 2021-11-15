@@ -11,7 +11,7 @@ router.get("/createdb", (req, res) => {
     let sql = "CREATE DATABASE heroku_01a7a053f210cd7";
     db.query(sql);
     //TODO: Proper error handling needed incase DB already exist
-    res.send("Database heroku_01a7a053f210cd7 created....");
+    res.send("Database created....");
   } catch (err) {
     console.error(err.message);
     return res.status(404).json({ msg: "DataBase NOT created." });
@@ -19,7 +19,7 @@ router.get("/createdb", (req, res) => {
 });
 
 // @route    GET api/comment/createtable
-// @desc     create table on heroku_01a7a053f210cd7
+// @desc     create table 
 // @access   Public
 router.get("/createtable", (req, res) => {
   try {
@@ -29,7 +29,7 @@ router.get("/createtable", (req, res) => {
     db.query(sql, (err, result) => {
       //TODO: Proper error handling needed incase table already exist
       if (err) throw err;
-      res.send("comment table created on heroku_01a7a053f210cd7....");
+      res.send("comment table created ....");
     });
 
   } catch (err) {
@@ -53,7 +53,7 @@ router.post("/add", (req, res) => {
 
     db.query(sql, addcomment, (err, result) => {
       if (err) throw err;
-      res.send("comment inserted in heroku_01a7a053f210cd7....");
+      res.send("comment inserted....");
     });
 
   } catch (err) {
