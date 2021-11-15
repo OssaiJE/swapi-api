@@ -8,10 +8,10 @@ const router = express.Router();
 // @access   Public
 router.get("/createdb", (req, res) => {
   try {
-    let sql = "CREATE DATABASE swapiDB";
+    let sql = "CREATE DATABASE heroku_01a7a053f210cd7";
     db.query(sql);
     //TODO: Proper error handling needed incase DB already exist
-    res.send("Database swapiDB created....");
+    res.send("Database heroku_01a7a053f210cd7 created....");
   } catch (err) {
     console.error(err.message);
     return res.status(404).json({ msg: "DataBase NOT created." });
@@ -19,17 +19,17 @@ router.get("/createdb", (req, res) => {
 });
 
 // @route    GET api/comment/createtable
-// @desc     create table on swapiDB
+// @desc     create table on heroku_01a7a053f210cd7
 // @access   Public
 router.get("/createtable", (req, res) => {
   try {
     let sql =
-      "CREATE TABLE `swapiDB` . `comments`(id INT AUTO_INCREMENT PRIMARY KEY, comment VARCHAR(500),ip_address VARCHAR(20), date_added TIMESTAMP)";
+      "CREATE TABLE `heroku_01a7a053f210cd7` . `comments`(id INT AUTO_INCREMENT PRIMARY KEY, comment VARCHAR(500),ip_address VARCHAR(20), date_added TIMESTAMP)";
 
     db.query(sql, (err, result) => {
       //TODO: Proper error handling needed incase table already exist
       if (err) throw err;
-      res.send("comment table created on swapiDB....");
+      res.send("comment table created on heroku_01a7a053f210cd7....");
     });
 
   } catch (err) {
@@ -49,11 +49,11 @@ router.post("/add", (req, res) => {
     // gets comment from req.body
     let comment = req.body.comment;
     let addcomment = { comment, ip_address: `${ip_address}` };
-    let sql = "INSERT INTO `swapiDB` . `comments` SET ?";
+    let sql = "INSERT INTO `heroku_01a7a053f210cd7` . `comments` SET ?";
 
     db.query(sql, addcomment, (err, result) => {
       if (err) throw err;
-      res.send("comment inserted in swapiDB....");
+      res.send("comment inserted in heroku_01a7a053f210cd7....");
     });
 
   } catch (err) {
@@ -68,7 +68,7 @@ router.post("/add", (req, res) => {
 router.get("/", (req, res) => {
   try {
     let sql =
-      "SELECT comment, ip_address, date_added FROM `swapiDB` . `comments` ORDER BY date_added DESC";
+      "SELECT comment, ip_address, date_added FROM `heroku_01a7a053f210cd7` . `comments` ORDER BY date_added DESC";
 
     db.query(sql, (err, result) => {
       if (err) throw err;
