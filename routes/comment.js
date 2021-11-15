@@ -81,4 +81,23 @@ router.get("/", (req, res) => {
   }
 });
 
+// @route    GET api/comment/delete
+// @desc     get TRUNCATE comments
+// @access   Public
+router.get("/delete", (req, res) => {
+  try {
+    let sql = "TRUNCATE TABLE `heroku_01a7a053f210cd7` . `comments`";
+
+    db.query(sql, (err, result) => {
+      if (err) throw err;
+      res.status(200).json(result);
+    });
+
+  } catch (err) {
+    console.error(err.message);
+    return res.status(404).json({ msg: "Comment NOT inserted" });
+  }
+});
+
+
 export default router;
