@@ -15,5 +15,6 @@ db.connect((err) => {
     throw err;
   }
 });
+db.on();
 
 export default db;
