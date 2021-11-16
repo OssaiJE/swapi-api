@@ -95,7 +95,7 @@ router.get("/delete", (req, res) => {
 
   } catch (err) {
     console.error(err.message);
-    return res.status(404).json({ msg: "Comment NOT inserted" });
+    return res.status(404).json({ msg: "Table NOT Truncated" });
   }
 });
 
